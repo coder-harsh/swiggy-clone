@@ -24,15 +24,16 @@ const styleCard = { //we can also put this inside {} directly: 4:0:43:32
 }
 // const ResturantCard = (props) => {//this propos will be an object now. It is argument. But paramter is local to function. Paramter is defined in fun definition only. Is props ka name kuchh v ho sakta hain. Yahan fn call and recieve v ho raha hain so ye argument hain
 // some cool developers
-const ResturantCard = ({ resName, cuisine }) => { //destructuring on the fly
-    // console.log(props); //{resName: 'Meghna Fooots', cuisine: 'Biryani, Fast Foods'} //{resName: 'KFC', cuisine: 'Burger, Fast Foods'} //props is an object here
-    console.log(resName); //Megna Foods KFC //when destructuring funtion
-    //const {resName, cuisine} = props; //destructuring
+const ResturantCard = ({ resName, cuisine }) => { //destructuring
+    console.log(props); //{resName: 'Meghna Fooots', cuisine: 'Biryani, Fast Foods'} //{resName: 'KFC', cuisine: 'Burger, Fast Foods'} //props is an object here
+    console.log(resName); //while destructuring //Meghna Foods //KFC
     return (
         <div className="res-card" style={styleCard}>  {/*{ } aceepts jsx object. It is inline style in jsx*/}
             <img alt="res-logo" className="res-logo" src="https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/85ccae4e3576f9330af102c46ca85395" />
+            <h3>{props.resName}</h3> manadatory to recive by props.resName
             <h3>{resName}</h3> {/*when destructuring*/}
             <h4>{cuisine}</h4>
+            {/* <h4>{props.cuisine}</h4> */}
             <h4>4.4 stars</h4>
             <h5>38 Mins</h5>
         </div>
@@ -43,7 +44,10 @@ const Body = () => {
         <div className="body">
             <div className="search">Search</div>
             <div className="res-container">
-                <ResturantCard resName="Meghna Fooots" cuisine="Biryani, Fast Foods" />
+                <ResturantCard resName="Meghna Fooots" cuisine="Biryani, Fast Foods" /> {/*property and value to fn. These are props. What ever we will pass here, react will wrap everything into props*/}
+                {/* whenever we pass some dynamic data to component,  we pass in as as prop
+                React is wrapping this inside an object and it is passing to that function.
+                */}
                 <ResturantCard resName="KFC" cuisine="Burger, Fast Foods" />
             </div>
         </div>
@@ -57,3 +61,6 @@ const AppLayout = () => {
 }
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(<AppLayout />);
+
+
+//config driven ui:
