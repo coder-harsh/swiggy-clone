@@ -32,7 +32,7 @@
 
 .res-card {
     width: 200px;
-    height: 350px;
+    /* height: 350px; */
     padding: 2px;
     background-color: aliceblue;
     filter: drop-shadow(rgba(0, 0, 0, 0.1) 0px 2px 8px);
@@ -50,5 +50,11 @@
 
 .res-logo {
     width: 100%;
+    height: 150px;
     border-radius: 16px 16px 0px 0px;
+}
+
+a {
+    text-decoration: none;
+    color: black;
 }
