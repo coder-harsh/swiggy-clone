@@ -64,3 +64,31 @@ root.render(<AppLayout />);
 
 
 //config driven ui:
+
+
+video 4
+-see index as a unique key in multiple looping bad practice
+
+video 5 home work
+-see best practce for folder structure
+
+-can we do named and default export of a same thing?
+export const Header = () => {
+    return (
+        <div className="header">
+            <div className="logo-container">
+                <img className="logo" src={LOGO_URL} />
+            </div>
+            <div className="nav-items">
+                <ul>
+                    <li>Home</li>
+                    <li>About US</li>
+                    <li>Contact US</li>
+                    <li>Cart</li>
+                </ul>
+            </div>
+        </div>
+    )
+}
+export default Header;
+it is working
