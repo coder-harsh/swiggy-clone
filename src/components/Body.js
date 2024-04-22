@@ -1,53 +1,32 @@
 import ResturantCard from "./ResturantCard";
 import resList from "../utils/mocData";
+import { useState, useEffect } from "react";
+
 const Body = () => {
-    let listofResturants = [
-        {
-            "id": "23787",
-            "name": "Domino's Pizza",
-            "cloudinaryImageId": "d0450ce1a6ba19ea60cd724471ed54a8",
-            "locality": "6th Block",
-            "areaName": "Koramangla",
-            "costForTwo": "₹400 for two",
-            "cuisines": [
-                "Pizzas",
-                "Italian",
-                "Pastas",
-                "Desserts"
-            ],
-            "avgRating": 4.4
-        },
-        {
-            "id": "23788",
-            "name": "KFC",
-            "cloudinaryImageId": "d0450ce1a6ba19ea60cd724471ed54a8",
-            "locality": "6th Block",
-            "areaName": "Koramangla",
-            "costForTwo": "₹400 for two",
-            "cuisines": [
-                "Pizzas",
-                "Italian",
-                "Pastas",
-                "Desserts"
-            ],
-            "avgRating": 3.7
-        },
-    ]
+    //state varibale=normal js variable
+    //hook is normal js function
+    const [listofResturants, setListofResturant] = useState(resList);
+
+    //() anar jo v pass karenge wo ek default variable value hoga. useState([Default value])
+    //const array me sirf index pe value change karenge to error nhi dega. pura array change pe error dega const value change ka.
+
     // console.log(resList[0].info.id); //aise acess karenge nhi to undefined value dega resList.info.id se. BCS index map me hi hota
+
     return (
         <div className="body">
             <div className="filter-btn">
                 <button onClick={() => {
-                    listofResturants = listofResturants.filter((res) => res.avgRating > 4);
-                    console.log(listofResturants);
-                }}>
+                    const filteredList = listofResturants.filter((res) => res.info.avgRating >= 4);
+                    setListofResturant(filteredList);  //when ever state variable changes. React will rerender that component.
+                }
+                }>
                     Top Rated Resturants
                 </button>
             </div>
             <div className="res-container">
                 {
-                    resList.map((resturant) => {
-                        return <ResturantCard key={resturant.info.id} resData={resturant} />
+                    listofResturants.map((resturant) => {
+                        return <ResturantCard key={resturant.info.id} resData={resturant} /> //isme agar reslist v pass karenge to resList[index].info.id se acess karna padega
                     })
 
                 }

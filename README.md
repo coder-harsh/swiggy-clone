@@ -60,3 +60,15 @@ import Header from "./components/Header"; //named import
 
 -multiple export - named export
 -single export - default
+
+#react Hook
+-normal js utility function
+99% these 2 hooks: 80% useState and 20% useState
+-useState(), useEffect()
+
+-useState(): superpowerful state variable in React
+-it will be named import
+-maintains state of variable/component
+-local state variable's scope is inside that component
+
+-useState variable mein agar array/object rahega and use variable ko hum agar const se v define karenge to error nhi dega.
