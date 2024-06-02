@@ -27,10 +27,15 @@ const Body = () => {
     };
 
     console.log("body is rendered..");
-    if (listofResturants.length === 0) {
+    /*
+    if (listofResturants.length === 0) {  //conditional rendering
         return <Shimmer />
     }
-    return (
+    */
+
+    return listofResturants.length === 0 ? ( //ternary operator
+        <Shimmer />
+    ) : (
         <div className="body">
             <div className="filter-btn">
                 <button onClick={() => {
