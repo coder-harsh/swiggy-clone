@@ -71,3 +71,18 @@ a {
     border-radius: 8px;
     cursor: pointer;
 }
+
+.shimmer-container {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.shimmer-card {
+    box-sizing: border-box;
+    width: 200px;
+    height: 350px;
+    background-color: aliceblue;
+    margin: 10px;
+    border-radius: 16px;
+    padding: 8px;
+}

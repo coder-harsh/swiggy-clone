@@ -1,5 +1,6 @@
 import ResturantCard from "./ResturantCard";
 import { useState, useEffect } from "react"; //named import
+import Shimmer from "./Shimmer";
 
 const Body = () => {
     const [listofResturants, setListofResturant] = useState([]);
@@ -19,14 +20,16 @@ const Body = () => {
             const json = await data.json();
             console.log(json);
             console.log(json.data.cards[1].card.card.gridElements.infoWithStyle.restaurants[0].info.name);
-            setListofResturant(json.data.cards[1].card.card.gridElements.infoWithStyle.restaurants);
+            setListofResturant(json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
         } catch (error) {
             console.error('Failed to fetch api data:', error);
         }
     };
 
     console.log("body is rendered..");
-
+    if (listofResturants.length === 0) {
+        return <Shimmer />
+    }
     return (
         <div className="body">
             <div className="filter-btn">
