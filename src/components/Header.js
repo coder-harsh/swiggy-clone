@@ -14,10 +14,16 @@ const Header = () => {
     //if dependency array is [btnName], then useeffect will be called when btnName(dependency array) will be updated.
 
     //useffect will always be called on initial render of component. 
+    /*
+        useEffect(() => {
+            console.log("Header Useffect Called");
+        }, [btnName]);
+    */
+    //never create usestate outside your component. It will throw an error: Hook can be only be called inside the body of function component.
+    //usestate is used to create local state variable inside the functional component.
+    //always try to write usestate in top of the component. It will not create any inconsistency.
+    //never create usestate inside if else, for loop or inside any function.
 
-    useEffect(() => {
-        console.log("Header Useffect Called");
-    }, [btnName]);
 
     return (
         <div className="header">
