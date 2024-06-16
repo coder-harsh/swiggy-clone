@@ -22,9 +22,6 @@
     margin: 0px 15px;
 }
 
-.search {
-    padding: 10px;
-}
 
 .res-container {
     display: flex;
@@ -60,16 +57,17 @@ a {
     color: black;
 }
 
-.filter-btn {
+.search-btn {
+    cursor: pointer;
+}
+
+.filter {
+    display: flex;
     margin: 6px;
 }
 
-.filter-btn button {
-    padding: 9px 15px;
-    background-color: rgb(79, 255, 9);
-    outline: none;
-    border: none;
-    border-radius: 8px;
+.filter-btn {
+    margin: 0px 6px;
     cursor: pointer;
 }
 

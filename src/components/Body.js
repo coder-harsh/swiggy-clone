@@ -4,6 +4,9 @@ import Shimmer from "./Shimmer";
 
 const Body = () => {
     const [listofResturants, setListofResturant] = useState([]);
+    const [filterListofResturants, setfilterListofResturant] = useState([]);
+    const [searchText, setSearchText] = useState("");
+    //when ever we change local state variable, react rerenders the component.
 
     //useEffect is normal js function. It will take 2 arguments. 1 is call back fn and 2nd is dependency array.
 
@@ -21,6 +24,7 @@ const Body = () => {
             console.log(json);
             console.log(json.data.cards[1].card.card.gridElements.infoWithStyle.restaurants[0].info.name);
             setListofResturant(json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+            setfilterListofResturant(json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
         } catch (error) {
             console.error('Failed to fetch api data:', error);
         }
@@ -37,10 +41,30 @@ const Body = () => {
         <Shimmer />
     ) : (
         <div className="body">
-            <div className="filter-btn">
-                <button onClick={() => {
-                    const filteredList = listofResturants.filter((res) => res.info.avgRating >= 4);
-                    setListofResturant(filteredList);
+            <div className="filter">
+                <div className="search">
+                    <input type="text" className="search-box" value={searchText} onChange={(e) => {
+                        setSearchText(e.target.value);
+                        //when ever you change the local state variable, react rerenders the component outside usestate hook.
+                        //when ever we write anything, react rerenders thewhole  component and updates the input field value only after reconcilation is complete. 
+                        //Dom manipulation is expensive. React is effecient at it.
+                        //why react is fast: bcs react fiber/new reconciliation algorithm only updates that portion of dom after finding the diffrence.
+                    }} />
+                    <button className="search-btn" onClick={() => {
+                        //filter resturant cards and update ui
+                        //serach text
+                        console.log(searchText);
+                        const filteredRes = listofResturants.filter(
+                            (res) => res.info.name.toLowerCase().includes(searchText.toLowerCase())
+                        );
+                        setfilterListofResturant(filteredRes);
+                    }}>Search</button>
+                </div>
+                <button className="filter-btn" onClick={() => {
+                    // const filteredList = listofResturants.filter((res) => res.info.avgRating >= 4);
+                    const filteredList = filterListofResturants.filter((res) => res.info.avgRating >= 4);
+                    // setListofResturant(filteredList);
+                    setfilterListofResturant(filteredList);
                 }
                 }>
                     Top Rated Resturants
@@ -48,7 +72,7 @@ const Body = () => {
             </div>
             <div className="res-container">
                 {
-                    listofResturants.map((resturant) => {
+                    filterListofResturants.map((resturant) => {
                         return <ResturantCard key={resturant.info.id} resData={resturant} />
                     })
 
