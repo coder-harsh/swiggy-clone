@@ -72,3 +72,12 @@ import Header from "./components/Header"; //named import
 -local state variable's scope is inside that component
 
 -useState variable mein agar array/object rahega and use variable ko hum agar const se v define karenge to error nhi dega.
+
+#types of routing
+
+-Server side routing: When routing happend, network call will be there. ex: anchor tag
+-Client Side routing: when routing happend, network call will not be there. ex: link to
+
+in client side routing: when routing happend, there will be interchange of component.
+
+This is why react is for single page application as only one page loads then there is interchange of components with client side routing.

@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { LOGO_URL } from "../utils/constants"; //named ixport
+import { Link } from "react-router-dom";
 const Header = () => {
     // let btnName = "Login";
     const [btnName, setbtnName] = useState("Login"); //once this useState variable changes, whole component outside use state will be rendered. thats why we need to use usestate inside a component
@@ -32,9 +33,10 @@ const Header = () => {
             </div>
             <div className="nav-items">
                 <ul>
-                    <li>Home</li>
-                    <li>About US</li>
-                    <li>Contact US</li>
+                    <li><Link to="/">Home</Link></li>
+                    {/* <li><a href="/about">About US</a></li> anchor tag will reload the page but Link will not */}
+                    <li><Link to="/about">About US</Link></li>
+                    <li><Link to="/contact">Contact US</Link></li>
                     <li>Cart</li>
                     <button className="login" onClick={() => {
                         btnName === "Login" ? setbtnName("Logout") : setbtnName("Login");
