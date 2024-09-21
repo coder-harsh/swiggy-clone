@@ -5,6 +5,7 @@ import Body from "./components/Body";
 import About from "./components/About";
 import Contact from "./components/Contact";
 import Error from "./components/Error";
+import ResturantMenu from "./components/ResturantMenu";
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom"; //when ever we need to create routes, we need to create routing configuration. This createbrowserrouter will create routing configuration for us.
 
 const AppLayout = () => {
@@ -31,6 +32,10 @@ const appRouter = createBrowserRouter([  //RouterProvider will actually provide 
             {
                 path: "/contact",
                 element: <Contact />,
+            },
+            {
+                path: "/resturants/:resId",
+                element: <ResturantMenu />,
             },
         ],
         errorElement: <Error />,
