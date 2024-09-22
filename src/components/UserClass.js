@@ -3,11 +3,18 @@ class UserClass extends React.Component {
     constructor(props) {
         super(props); //this is manadatory
         console.log(props);
+        this.state = {   //this is how state variable is declared. here state is a whole big object
+            count: 0,
+            count2: 2 //even in fn componet, useState object holding all useState variable inside a single state object.
+        }
     }
     render() {
         const { name } = this.props;
+        const { count, count2 } = this.state
         return (
             <div className="user">
+                <h2>Count: {count}</h2>
+                <h2>Count 2: {count2}</h2>
                 <h2>Name: {name}</h2> {/*this.props.name se data receive hoga constructor se*/}
                 <h3>Location: Patna</h3>
                 <h3>Contact: harsh@indiandevelopers.org</h3>
