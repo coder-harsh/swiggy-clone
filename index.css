@@ -89,3 +89,15 @@ a {
 .login {
     cursor: pointer;
 }
+
+.user {
+    border: 2px solid gray;
+    border-radius: 8px;
+    padding: 10px 8px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+    width: 60%
+}
