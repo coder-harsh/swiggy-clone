@@ -15,6 +15,13 @@ class UserClass extends React.Component {
             <div className="user">
                 <h2>Count: {count}</h2>
                 <h2>Count 2: {count2}</h2>
+                <button onClick={() => {
+                    // count = count + 1; //we cant do this. we cannot update state variable directoly. for it react gives superpower method this.setState();
+                    this.setState({ //iske anadr ek object pass hoga jo state variable update karega.
+                        count: this.state.count + 1,
+                        count2: this.state.count2 + 1
+                    })
+                }}>Counter</button>
                 <h2>Name: {name}</h2> {/*this.props.name se data receive hoga constructor se*/}
                 <h3>Location: Patna</h3>
                 <h3>Contact: harsh@indiandevelopers.org</h3>
