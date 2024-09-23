@@ -33,3 +33,31 @@ export default About;
 
 ///in class based component, componentDidMount is used to fetch api data as it is called after the component is rendered.
 //First constructor, then render and hen componentdidmount is called.
+//dom manipulation is the most expensive thing, when we are updating the component.
+//refer projects.wojtek.maj for diagram or vdo 8
+//render phase is very fast. commit phase takes time.
+/*
+Parent constructor
+Parent Render
+
+-------------ender phase
+
+Child 1 constructor
+child 1 render
+child 2 constructor
+child 2 render
+
+------------
+here diff is calculated
+reconciliation is triggered
+then ---commit phase
+
+dom updated in a signgle batch
+child 1 component componentdidmount
+child 2 component componentdidmount
+
+
+
+parent componentdidmount
+
+*/
