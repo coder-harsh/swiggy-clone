@@ -7,10 +7,15 @@ class UserClass extends React.Component {
             count: 0,
             count2: 2 //even in fn componet, useState object holding all useState variable inside a single state object.
         }
+        console.log("Child Constructor is called");
+    }
+    componentDidMount() {
+        console.log("child componentDidMount");
     }
     render() {
         const { name } = this.props;
-        const { count, count2 } = this.state
+        const { count, count2 } = this.state;
+        console.log("Child Render is called");
         return (
             <div className="user">
                 <h2>Count: {count}</h2>
@@ -35,3 +40,7 @@ export default UserClass;
 //Class based compoenet is a class which inherits from React.Component and it has a render method which returns some piece of jsx.
 //React.Component is a class which is given to us by React.
 // UserClass is inhering some property of React.Component.
+
+
+//the first thing, when a class is loaded, a constructor is called.
+//after it, render() is called. i.e first constructor, then render() is called.
