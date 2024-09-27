@@ -1,8 +1,8 @@
-import User from "./User";
+// import User from "./User";
 import UserClass from "./UserClass";
 import React from "react";
-// import { Component } from "react"; //we can also use this and directly extends to component
-class About extends React.Component {
+import { Component } from "react"; //we can also use this and directly extends to component
+class About extends Component {
     constructor(props) {
         super(props);
         console.log("Parent Constructor"); //first parent will be called then child compoent
@@ -16,7 +16,7 @@ class About extends React.Component {
             <div>
                 <h1>About Swiggy</h1>
                 <h3>One Destination for eating</h3>
-                <User name={"Akshay Saini (Function)"} /> {/*pass data fn compo*/}
+                {/* <User name={"Akshay Saini (Function)"} /> pass data fn compo */}
                 <UserClass name={"Akshay Saini Class"} />     {/* in both component type, way of passing the data is same but way of receive data is different. */}
             </div>
         );
