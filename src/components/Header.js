@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { LOGO_URL } from "../utils/constants"; //named ixport
 import { Link } from "react-router-dom";
+import useOnlineStatus from "../utils/useOnlineStatus";
 const Header = () => {
     // let btnName = "Login";
     const [btnName, setbtnName] = useState("Login"); //once this useState variable changes, whole component outside use state will be rendered. thats why we need to use usestate inside a component
@@ -25,7 +26,7 @@ const Header = () => {
     //always try to write usestate in top of the component. It will not create any inconsistency.
     //never create usestate inside if else, for loop or inside any function.
 
-
+    const onlineStatus = useOnlineStatus();
     return (
         <div className="header">
             <div className="logo-container">
@@ -33,6 +34,7 @@ const Header = () => {
             </div>
             <div className="nav-items">
                 <ul>
+                    <li><Link to="/">Online Staus:{onlineStatus ? "✅" : "🔴"}</Link></li>
                     <li><Link to="/">Home</Link></li>
                     {/* <li><a href="/about">About US</a></li> anchor tag will reload the page but Link will not */}
                     <li><Link to="/about">About US</Link></li>
