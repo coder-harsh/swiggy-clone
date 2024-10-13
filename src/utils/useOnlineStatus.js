@@ -12,3 +12,6 @@ const useOnlineStatus = () => {
     return onlineStatus;
 }
 export default useOnlineStatus;
+
+
+//not necessary to use use keywordbefore name of custom hook but its good practice
