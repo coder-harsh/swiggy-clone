@@ -28,19 +28,19 @@ const Header = () => {
 
     const onlineStatus = useOnlineStatus();
     return (
-        <div className="header">
-            <div className="logo-container">
-                <img className="logo" src={LOGO_URL} />
+        <div className="shadow flex justify-between items-center flex-row h-20 px-10 mb-5">
+            <div>
+                <img className="w-20" src={LOGO_URL} />
             </div>
-            <div className="nav-items">
-                <ul>
-                    <li><Link to="/">Online Staus:{onlineStatus ? "✅" : "🔴"}</Link></li>
-                    <li><Link to="/">Home</Link></li>
+            <div>
+                <ul className="flex">
+                    <li className="mx-4 font-bold text-gray-500"><Link to="/">Online Staus:{onlineStatus ? "✅" : "🔴"}</Link></li>
+                    <li className="mx-4 font-bold text-gray-500"><Link to="/">Home</Link></li>
                     {/* <li><a href="/about">About US</a></li> anchor tag will reload the page but Link will not */}
-                    <li><Link to="/about">About US</Link></li>
-                    <li><Link to="/contact">Contact US</Link></li>
-                    <li>Cart</li>
-                    <button className="login" onClick={() => {
+                    <li className="mx-4 font-bold text-gray-500"><Link to="/about">About US</Link></li>
+                    <li className="mx-4 font-bold text-gray-500"><Link to="/contact">Contact US</Link></li>
+                    <li className="mx-4 font-bold text-gray-500">Cart</li>
+                    <button className="login mx-4 font-bold text-gray-500" onClick={() => {
                         btnName === "Login" ? setbtnName("Logout") : setbtnName("Login");
                         console.log(btnName);
                     }}>{btnName}</button>

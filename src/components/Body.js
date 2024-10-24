@@ -3,6 +3,7 @@ import { useState, useEffect } from "react"; //named import
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
+import { FaStar } from "react-icons/fa6";
 const Body = () => {
     const [listofResturants, setListofResturant] = useState([]);
     const [filterListofResturants, setfilterListofResturant] = useState([]);
@@ -45,8 +46,8 @@ const Body = () => {
         <Shimmer />
     ) : (
         <div className="body">
-            <div className="filter">
-                <div className="search">
+            <div className="flex justify-center items-center mb-4">
+                <div className="flex justify-center border-2 mr-4">
                     <input type="text" className="search-box" value={searchText} onChange={(e) => {
                         setSearchText(e.target.value);
                         //when ever you change the local state variable, react rerenders the component outside usestate hook.
@@ -71,13 +72,18 @@ const Body = () => {
                     setfilterListofResturant(filteredList);
                 }
                 }>
-                    Top Rated Resturants
+                    <span className="flex justify-center items-center bg-gray-100 px-4 py-1 rounded">
+                        <p className="mr-1">
+                            4
+                        </p>
+                        <FaStar className="text-yellow-400" />
+                    </span>
                 </button>
             </div>
-            <div className="res-container">
+            <div className="flex flex-wrap justify-center">
                 {
                     filterListofResturants.map((resturant) => {
-                        return <Link to={"/resturants/" + resturant.info.id} key={resturant.info.id}><ResturantCard resData={resturant} /></Link>
+                        return <Link to={"/resturants/" + resturant.info.id} key={resturant.info.id} className="bg-gray-00 hover:bg-gray-200 rounded-lg w-60 border-gray-400 shadow mb-6 mx-3"><ResturantCard resData={resturant} /></Link>
                     })
 
                 }

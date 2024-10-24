@@ -7,7 +7,6 @@ import Contact from "./components/Contact";
 import Error from "./components/Error";
 import ResturantMenu from "./components/ResturantMenu";
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom"; //when ever we need to create routes, we need to create routing configuration. This createbrowserrouter will create routing configuration for us.
-
 const AppLayout = () => {
     return <div className="app">
         <Header />
