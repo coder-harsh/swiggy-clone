@@ -1,4 +1,4 @@
-import ResturantCard from "./ResturantCard";
+import ResturantCard, { withPromotedLabel } from "./ResturantCard";
 import { useState, useEffect } from "react"; //named import
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
@@ -11,7 +11,7 @@ const Body = () => {
     //when ever we change local state variable, react rerenders the component.
 
     //useEffect is normal js function. It will take 2 arguments. 1 is call back fn and 2nd is dependency array.
-
+    const ResturantCardPromoted = withPromotedLabel(ResturantCard);
     useEffect(() => {
         // console.log("Use Effect called.");
         fetchData();
@@ -24,7 +24,7 @@ const Body = () => {
             const data = await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=28.65420&lng=77.23730&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING");
             const json = await data.json();
             console.log(json);
-            console.log(json.data.cards[1].card.card.gridElements.infoWithStyle.restaurants[0].info.name);
+            console.log(json.data.cards[2].card.card.gridElements.infoWithStyle.restaurants[0].info.name);
             setListofResturant(json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
             setfilterListofResturant(json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
         } catch (error) {
@@ -83,7 +83,12 @@ const Body = () => {
             <div className="flex flex-wrap justify-center">
                 {
                     filterListofResturants.map((resturant) => {
-                        return <Link to={"/resturants/" + resturant.info.id} key={resturant.info.id} className="bg-gray-00 hover:bg-gray-200 rounded-lg w-60 border-gray-400 shadow mb-6 mx-3"><ResturantCard resData={resturant} /></Link>
+                        return <Link to={"/resturants/" + resturant.info.id} key={resturant.info.id} className="bg-gray-100 hover:bg-gray-200 rounded-lg w-64 border-gray-400 shadow mb-6 mx-3">
+                            <ResturantCard resData={resturant} />
+                            {
+                                resturant.data.promoted ? (<ResturantCardPromoted resData={resturant} />) : <ResturantCard resData={resturant} />
+                            }
+                        </Link>
                     })
 
                 }
