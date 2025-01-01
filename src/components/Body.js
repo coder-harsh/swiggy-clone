@@ -24,9 +24,9 @@ const Body = () => {
             const data = await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=28.65420&lng=77.23730&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING");
             const json = await data.json();
             console.log(json);
-            console.log(json.data.cards[2].card.card.gridElements.infoWithStyle.restaurants[0].info.name);
-            setListofResturant(json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
-            setfilterListofResturant(json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+            console.log(json.data.cards[4].card.card.gridElements.infoWithStyle.restaurants[0].info.name);
+            setListofResturant(json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+            setfilterListofResturant(json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
         } catch (error) {
             console.error('Failed to fetch api data:', error);
         }
@@ -84,9 +84,9 @@ const Body = () => {
                 {
                     filterListofResturants.map((resturant) => {
                         return <Link to={"/resturants/" + resturant.info.id} key={resturant.info.id} className="bg-gray-100 hover:bg-gray-200 rounded-lg w-64 border-gray-400 shadow mb-6 mx-3">
-                            <ResturantCard resData={resturant} />
+                            {/* <ResturantCard resData={resturant} /> */}
                             {
-                                resturant.data.promoted ? (<ResturantCardPromoted resData={resturant} />) : <ResturantCard resData={resturant} />
+                                resturant.info.isOpen ? (<ResturantCardPromoted resData={resturant} />) : <ResturantCard resData={resturant} />
                             }
                         </Link>
                     })

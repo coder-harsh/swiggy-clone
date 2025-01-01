@@ -18,8 +18,8 @@ const ResturantCard = (props) => {
 export const withPromotedLabel = (ResturantCard) => {
     return (props) => {
         return (
-            <div className="bg-red-700">
-                <label>Promoted</label>
+            <div className="flex-inline flex-col">
+                <label className="bg-red-500 p-1 flex-inline text-sm rounded z-50 text-white">Closed</label>
                 <ResturantCard {...props} />
             </div>
         )
