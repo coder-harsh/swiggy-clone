@@ -86,7 +86,7 @@ const Body = () => {
                         return <Link to={"/resturants/" + resturant.info.id} key={resturant.info.id} className="bg-gray-100 hover:bg-gray-200 rounded-lg w-64 border-gray-400 shadow mb-6 mx-3">
                             {/* <ResturantCard resData={resturant} /> */}
                             {
-                                resturant.info.isOpen ? (<ResturantCardPromoted resData={resturant} />) : <ResturantCard resData={resturant} />
+                                resturant.info.isOpen ?<ResturantCard resData={resturant} />:<ResturantCardPromoted resData={resturant} />
                             }
                         </Link>
                     })
